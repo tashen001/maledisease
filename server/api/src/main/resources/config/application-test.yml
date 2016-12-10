@@ -1,0 +1,48 @@
+server:
+  port: 8080
+
+patient:
+    seckey: AJDHEU/1DEfs.FDfs1%#
+
+spring:
+  profiles : dev
+  datasource:
+    name: maledisease
+    type: com.alibaba.druid.pool.DruidDataSource
+    url: jdbc:mysql://192.168.1.254:3306/maledisease
+    username: root
+    password: 123456
+    driver-class-name: com.mysql.jdbc.Driver
+    maxIdle: 20
+    minIdle: 5
+    maxActive: 15
+    initialSize: 5
+    maxWait: 60000
+    timeBetweenEvictionRunsMillis: 3000
+    minEvictableIdleTimeMillis: 300000
+    validationQuery: SELECT '1'
+    testWhileIdle: true
+    testOnBorrow: false
+    testOnReturn: false
+    poolPreparedStatements: true
+    maxPoolPreparedStatementPerConnectionSize: 20
+    filters: stat
+  redis:
+      host: 192.168.1.254
+      password:
+      port: 6379
+      pool:
+        max-idle: 8
+        min-idle: 0
+        max-active: 8
+        max-wait: -1
+mybatis:
+  mapperLocations: classpath*:mapper/*.xml
+  typeAliasesPackage: com.nrb.maledisease.entity
+
+logging:
+  path: /data/domain/nrd.com/logs/
+  config: classpath:config/logback.xml
+    level:
+      root: info
+      ACCESS: info
