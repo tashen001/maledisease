@@ -1,4 +1,4 @@
-package com.nrb.maledisease.patient.domain;
+package com.nrb.maledisease.auth.domain;
 
 /**
  * Created by zhangyunfei on 02/12/2016.

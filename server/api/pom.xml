@@ -26,6 +26,11 @@
 	<dependencies>
 		<dependency>
 			<groupId>com.nrb</groupId>
+			<artifactId>auth-function</artifactId>
+			<version>1.0-SNAPSHOT</version>
+		</dependency>
+		<dependency>
+			<groupId>com.nrb</groupId>
 			<artifactId>patient-function</artifactId>
 			<version>1.0-SNAPSHOT</version>
 		</dependency>

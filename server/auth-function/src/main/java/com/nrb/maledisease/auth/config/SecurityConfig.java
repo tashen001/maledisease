@@ -1,10 +1,10 @@
-package com.nrb.maledisease.patient.config;
+package com.nrb.maledisease.auth.config;
 
-import com.nrb.maledisease.patient.handler.RestAuthenticationEntryPoint;
-import com.nrb.maledisease.patient.handler.RestAuthenticationFailureHandler;
-import com.nrb.maledisease.patient.handler.RestAuthenticationSuccessHandler;
-import com.nrb.maledisease.patient.handler.RestLogoutSuccessHandler;
-import com.nrb.maledisease.patient.service.AuthService;
+import com.nrb.maledisease.auth.handle.RestAuthenticationEntryPoint;
+import com.nrb.maledisease.auth.handle.RestAuthenticationFailureHandler;
+import com.nrb.maledisease.auth.handle.RestAuthenticationSuccessHandler;
+import com.nrb.maledisease.auth.handle.RestLogoutSuccessHandler;
+import com.nrb.maledisease.auth.service.AuthService;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.method.configuration.EnableGlobalMethodSecurity;
@@ -12,7 +12,6 @@ import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.crypto.password.PasswordEncoder;
-import org.springframework.security.web.authentication.SimpleUrlAuthenticationFailureHandler;
 
 import javax.annotation.Resource;
 

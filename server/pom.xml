@@ -20,6 +20,7 @@
         <module>api</module>
         <module>patient-function</module>
         <module>common</module>
+        <module>auth-function</module>
     </modules>
 
     <dependencies>

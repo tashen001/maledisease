@@ -1,12 +1,11 @@
-package com.nrb.maledisease.patient.api;
+package com.nrb.maledisease.auth.api;
 
+import com.nrb.maledisease.auth.domain.Patient;
+import com.nrb.maledisease.auth.service.AuthService;
 import com.nrb.maledisease.common.Result;
 import com.nrb.maledisease.common.exception.ParamException;
-import com.nrb.maledisease.patient.domain.Patient;
-import com.nrb.maledisease.patient.service.PatientService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -24,14 +23,14 @@ public class PatientApi {
     private static final Logger LOGGER = LoggerFactory.getLogger(PatientApi.class);
 
     @Resource
-    private PatientService patientService;
+    private AuthService authService;
 
     @RequestMapping(value = "/register", method = RequestMethod.POST)
     public Result register(@Valid Patient patient, Errors errors) {
         if (errors.hasErrors()) {
             throw new ParamException(errors);
         }
-        boolean flag = patientService.register(patient);
+        boolean flag = authService.register(patient);
         return Result.buildSuccessResult(flag);
     }
 

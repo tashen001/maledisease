@@ -1,6 +1,6 @@
-package com.nrb.maledisease.patient.dao;
+package com.nrb.maledisease.auth.dao;
 
-import com.nrb.maledisease.patient.domain.PatientAuth;
+import com.nrb.maledisease.auth.domain.PatientAuth;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Select;
 import org.springframework.stereotype.Component;

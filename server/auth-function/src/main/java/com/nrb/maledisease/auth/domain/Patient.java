@@ -1,4 +1,4 @@
-package com.nrb.maledisease.patient.domain;
+package com.nrb.maledisease.auth.domain;
 
 import java.util.List;
 

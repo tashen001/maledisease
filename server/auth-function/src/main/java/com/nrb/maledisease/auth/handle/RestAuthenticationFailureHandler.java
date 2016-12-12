@@ -1,4 +1,4 @@
-package com.nrb.maledisease.patient.handler;
+package com.nrb.maledisease.auth.handle;
 
 import com.nrb.maledisease.common.Result;
 import com.nrb.maledisease.common.util.ResponseJsonUtil;
