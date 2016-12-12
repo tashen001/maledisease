@@ -3,6 +3,7 @@ package com.nrb.maledisease.common;
 import com.nrb.maledisease.common.exception.BusinessException;
 import com.nrb.maledisease.common.exception.ParamException;
 
+import javax.servlet.http.HttpServletResponse;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -11,16 +12,18 @@ import java.util.Map;
  */
 public class Result<T> {
 
-    private ResultCodeEnum code;
+    private static final int BUSINESSERROR = 520;
+
+    private int code;
     private String message;
     private Map<String, Object> extraMap = new HashMap<String, Object>();
     private T data;
 
-    public String getCode() {
-        return code.value();
+    public int getCode() {
+        return code;
     }
 
-    public void setCode(ResultCodeEnum code) {
+    public void setCode(int code) {
         this.code = code;
     }
 
@@ -50,21 +53,28 @@ public class Result<T> {
 
     public static Result buildExceptionResult(Exception e) {
         Result result = new Result();
-        result.setCode(ResultCodeEnum.EXCEPTION);
+        result.setCode(HttpServletResponse.SC_INTERNAL_SERVER_ERROR);
         result.setMessage(e.getMessage());
+        return result;
+    }
+
+    public static Result buildAuthExceptionResult(String message) {
+        Result result = new Result();
+        result.setCode(HttpServletResponse.SC_UNAUTHORIZED);
+        result.setMessage(message);
         return result;
     }
 
     public static Result buildInvalidParamResult(ParamException e) {
         Result result = new Result();
-        result.setCode(ResultCodeEnum.INVALIDPARAM);
+        result.setCode(HttpServletResponse.SC_BAD_REQUEST);
         result.setMessage(e.getMessage());
         return result;
     }
 
     public static Result buildBusinessErrorResult(BusinessException e) {
         Result result = new Result();
-        result.setCode(ResultCodeEnum.BUSINESSERROR);
+        result.setCode(Result.BUSINESSERROR);
         result.setMessage(e.getMessage());
         return result;
     }
@@ -72,14 +82,14 @@ public class Result<T> {
     public static Result buildSuccessResult(String message) {
         Result result = new Result();
         result.setMessage(message);
-        result.setCode(ResultCodeEnum.SUCCESS);
+        result.setCode(HttpServletResponse.SC_OK);
         return result;
     }
 
     public static <T> Result buildSuccessResult(T t) {
         Result result = new Result();
         result.setMessage("");
-        result.setCode(ResultCodeEnum.SUCCESS);
+        result.setCode(HttpServletResponse.SC_OK);
         result.setData(t);
         return result;
     }
@@ -87,7 +97,7 @@ public class Result<T> {
     public static <T> Result buildSuccessResult(String message, T t) {
         Result result = new Result();
         result.setMessage(message);
-        result.setCode(ResultCodeEnum.SUCCESS);
+        result.setCode(HttpServletResponse.SC_OK);
         result.setData(t);
         return result;
     }

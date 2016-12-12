@@ -1,6 +1,7 @@
 package com.nrb.maledisease.patient.config;
 
 import com.nrb.maledisease.patient.handler.RestAuthenticationEntryPoint;
+import com.nrb.maledisease.patient.handler.RestAuthenticationFailureHandler;
 import com.nrb.maledisease.patient.handler.RestAuthenticationSuccessHandler;
 import com.nrb.maledisease.patient.handler.RestLogoutSuccessHandler;
 import com.nrb.maledisease.patient.service.AuthService;
@@ -37,14 +38,14 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http.csrf().disable().authorizeRequests()
-                .antMatchers("/index", "/login", "/register/**").permitAll()
+                .antMatchers("/index", "/login", "/register").permitAll()
                 .anyRequest().authenticated()
                 .and()
                 .formLogin()
                 //登陆成功后的处理，因为是API的形式所以不用跳转页面
                 .successHandler(new RestAuthenticationSuccessHandler())
                 //登陆失败后的处理
-                .failureHandler(new SimpleUrlAuthenticationFailureHandler())
+                .failureHandler(new RestAuthenticationFailureHandler())
                 .and()
                 //登出后的处理
                 .logout().logoutSuccessHandler(new RestLogoutSuccessHandler())

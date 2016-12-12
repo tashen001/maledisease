@@ -43,12 +43,12 @@ public class LogFilter implements Filter {
         long executeTime = endTime - beginTime;
         StringBuilder sb = new StringBuilder();
         HttpServletRequest httpServletRequest = (HttpServletRequest)servletRequest;
-        sb.append("IP:" + getRemoteIP(httpServletRequest) + " - ");
-        sb.append("RequestURI:" + httpServletRequest.getRequestURI() + " - ");
+        sb.append(getRemoteIP(httpServletRequest) + " - ");
+        sb.append(httpServletRequest.getRequestURI() + " - ");
+        HttpServletResponse response = (HttpServletResponse) servletResponse;
+        sb.append(response.getStatus() + " - ");
         sb.append("Execute Time:" + executeTime + "ms" + " - ");
         sb.append("Param: " + getParamStr(httpServletRequest));
-        HttpServletResponse response = (HttpServletResponse) servletResponse;
-        sb.append("Status: " + response.getStatus());
         LOGGER.info(sb.toString());
     }
 

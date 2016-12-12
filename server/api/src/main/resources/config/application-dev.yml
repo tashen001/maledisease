@@ -2,8 +2,7 @@ server.:
   port: 8080
 
 
-patient:
-    seckey: AJDHEU/1DEfs.FDfs1%#
+patient-function:
 
 spring:
   profiles : dev

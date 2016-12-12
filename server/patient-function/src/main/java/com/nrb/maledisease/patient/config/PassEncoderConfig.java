@@ -12,11 +12,9 @@ import org.springframework.security.crypto.password.StandardPasswordEncoder;
 @Configuration
 public class PassEncoderConfig {
 
-    @Value("${patient.seckey}")
-    private String seckey;
-
     @Bean
     public PasswordEncoder passwordEncoder() {
-        return new StandardPasswordEncoder(seckey);
+        return new StandardPasswordEncoder();
     }
+
 }

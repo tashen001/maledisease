@@ -6,6 +6,7 @@ import com.nrb.maledisease.patient.domain.Patient;
 import com.nrb.maledisease.patient.service.PatientService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -32,5 +33,11 @@ public class PatientApi {
         }
         boolean flag = patientService.register(patient);
         return Result.buildSuccessResult(flag);
+    }
+
+    @RequestMapping("test")
+//    @PreAuthorize("hasRole('ROLE_TEST')")
+    public String test() {
+        return "test";
     }
 }
